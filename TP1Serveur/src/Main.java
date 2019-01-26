@@ -29,8 +29,6 @@ public class Main {
                 sc.nextLine(); // Ignorer le message envoyé par la console sd
             }
         }
-        System.out.println(nbPort);
-
         int clientNumber = 0;
         try (ServerSocket listener = new ServerSocket()) {
             listener.bind(new InetSocketAddress("127.0.0.1",nbPort));

@@ -11,39 +11,65 @@ public class Service extends Thread {
     }
 
     public void run(){
+        System.out.println("Connexion d'un client");
         Boolean isConnected = true;
+        BufferedReader in = null;
+        PrintWriter out=null;
+        ObjectInputStream inByte=null;
+        try {
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out = new PrintWriter(socket.getOutputStream(), true);
+            inByte = new ObjectInputStream(socket.getInputStream());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         while(isConnected){
-
+            String input = null;
             try {
-                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                DataInputStream inByte = new DataInputStream(socket.getInputStream());
-
-
-                // Send a welcome message to the client.
-                out.println("Hello, you are client #" + clientNumber);
-                Boolean isReading = true;
-                // Get messages from the client, line by line; return them capitalized
-                while (isReading) {
-                    String input = in.readLine();
-                    byte[] msg= new byte[512];
-                    inByte.read(msg);
-                    System.out.println(msg[1]);
-
-                    if (input == null || input.isEmpty()) {
-                        isReading = false;
-                    }
-                    out.println(input.toUpperCase());
-
+                input = in.readLine();
+                switch(input){
+                    case("dc"):
+                        isConnected = false;
+                        out.println("Deconnexion");
+                        System.out.println("Deconnection d'un client");
+                        socket.close();
+                        break;
+                    case("ls"):
+                        final File dossier = new File("./");
+                        final File[] listFiles = dossier.listFiles();
+                        for(File file : listFiles){
+                            if(file.isDirectory()){
+                                out.println("[Directory] "+file.getName());
+                            }else{
+                                out.println("[File] "+file.getName());
+                            }
+                        }
+                        out.println("");
+                        break;
+                    case ("upload"):
+                        String nomFichier = in.readLine();
+                        System.out.println(nomFichier);
+                        byte buffer[] = new byte[1024];
+                        FileOutputStream fichierOutput = new FileOutputStream("./"+nomFichier);
+                        int n;
+                        while((n=inByte.read(buffer))!=-1){
+                            System.out.println(n);
+                            System.out.println(buffer);
+                            fichierOutput.write(buffer,0,n);
+                        }
+                        System.out.println("fin du transfert");
+                        fichierOutput.close();
+                        break;
+                    default:
+                        out.println("HELLO MDR");
                 }
             } catch (IOException e) {
-                System.out.println("Error handling client #" + clientNumber);
                 e.printStackTrace();
-            } finally {
-                try { socket.close(); isConnected=false; } catch (IOException e) {}
-                System.out.println("Connection with client # " + clientNumber + " closed");
             }
+
+
         }
+        // TODO : fermer tout les flux/sockets
     }
 
 }

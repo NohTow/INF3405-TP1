@@ -1,0 +1,6 @@
+Un site web avec session pour : 
+pouvoir encrypter ses communications
+systeme de clef privée / clef publique pour chaque compte
+On créé une clef symétrique avec l'algo de hillfe machin bidule en envoyant le message chiffré avec la clef publique
+une fois que la clef a été créé on la réutilise pour la session (on peut la reset quand on veut)
+on stock juste les valeurs pas la clef et on renvoit a chaque fois ça reste stocké pendant 24 heures (ou une période définie) et après on peut plus décrypter
