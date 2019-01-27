@@ -31,6 +31,7 @@ public class Service extends Thread {
 			String nomFichier;
             try {
                 input = in.readLine();
+				System.out.println(input);
                 switch(input){
                     case("dc"):
                         isConnected = false;
@@ -83,8 +84,22 @@ public class Service extends Thread {
 							System.out.println("Le fichier "+nomFichier+" n'existe pas");
 						}
 						break;
+					case ("delete"):
+						nomFichier = in.readLine();
+						System.out.println("delete : "+nomFichier);
+						File fileToDelete = new File("./"+nomFichier);
+						if(fileToDelete.exists()){
+							if(fileToDelete.delete()){ // on vérifie que le fichier à été supprimé
+								out.println("Le fichier "+nomFichier+" a été supprimé");
+							}else{
+								out.println("La suppression de "+nomFichier+" a échoué");
+							}
+						}else{
+							out.println("Le fichier "+nomFichier+" n'existe pas");
+						}
+						break;
                     default:
-                        out.println("Cette comande n'a pas été prévue");
+                        out.println("Cette commande n'a pas été prévue");
 						System.out.println("Commande incorrecte");
                 }
             } catch (IOException e) {

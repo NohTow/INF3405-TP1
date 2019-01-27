@@ -41,8 +41,10 @@ public class Client {
                 default:
                     Pattern patternUpload = Pattern.compile("^upload\\s(.*)");
                     Pattern patternDownload = Pattern.compile("^download\\s(.*)");
+                    Pattern patternDelete = Pattern.compile("^delete\\s(.*)");
                     Matcher matcherUpload = patternUpload.matcher(message);
                     Matcher matcherDownload = patternDownload.matcher(message);
+                    Matcher matcherDelete = patternDelete.matcher(message);
                     if(matcherUpload.matches()){
                         if(matcherUpload.group(1).isEmpty()){
                             System.out.println("Veuillez rentrer un nom de fichier");
@@ -66,8 +68,8 @@ public class Client {
                                 }else{
                                     out.println("download");
                                     out.println(matcherDownload.group(1));
-                                    File fileToDownload = new File("./"+matcherDownload.group(1));
                                     if("STARTINGTODOWNLOAD".equals(in.readLine())){
+										File fileToDownload = new File("./"+matcherDownload.group(1));
                                         byte[] contentToRead = (byte []) inputStream.readObject();
                                         Files.write(fileToDownload.toPath(),contentToRead);
                                         System.out.println("Téléchargement de "+ matcherDownload.group(1)+" terminé");
@@ -76,7 +78,15 @@ public class Client {
                                     }
                                 }
 
-                    }else{
+                    }else if(matcherDelete.matches()){
+                    			if(matcherDelete.group(1).isEmpty()){
+                    				System.out.println("Veuillez rentrer un nom de fichier");
+								}else{
+                    				out.println("delete");
+                    				out.println(matcherDelete.group(1));
+                    				System.out.println(in.readLine());
+								}
+					} else{
                         System.out.println("Veuillez rentrer une commande valide");
                     }
             }
