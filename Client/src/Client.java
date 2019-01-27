@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Client {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Scanner sc = new Scanner(System.in);
         // TODO Demander le port & l'adresse et les vérifier
         //int nbPort = sc.nextInt();
@@ -18,6 +18,7 @@ public class Client {
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         ObjectOutputStream outputStream = new ObjectOutputStream((socket.getOutputStream()));
+        ObjectInputStream inputStream = new ObjectInputStream((socket.getInputStream()));
         Boolean isConnected = true;
         while(isConnected){
             String message = sc.nextLine();
@@ -38,30 +39,44 @@ public class Client {
                     //System.out.println("fin du dossier");
                     break;
                 default:
-                    Pattern pattern = Pattern.compile("^upload\\s(.*)");
-                    Matcher matcher = pattern.matcher(message);
-                    if(matcher.matches()){
-                        System.out.println("UPLOAD RECOGNIZED");
-                        System.out.println(matcher.group(1));
-                        File fileToUpload = new File("./"+matcher.group(1));
-                        if(fileToUpload.exists()) {
-                            //FileInputStream fichierInput = new FileInputStream(new File("./"+matcher.group(1)));
-                            byte[] content = Files.readAllBytes(fileToUpload.toPath());
-                            out.println("upload");
-                            out.println(matcher.group(1));
-                            outputStream.writeObject(content);
-                            System.out.println("fin transfert");
+                    Pattern patternUpload = Pattern.compile("^upload\\s(.*)");
+                    Pattern patternDownload = Pattern.compile("^download\\s(.*)");
+                    Matcher matcherUpload = patternUpload.matcher(message);
+                    Matcher matcherDownload = patternDownload.matcher(message);
+                    if(matcherUpload.matches()){
+                        if(matcherUpload.group(1).isEmpty()){
+                            System.out.println("Veuillez rentrer un nom de fichier");
                         }else{
-                            System.out.println("Le fichier n'existe pas");
+                            File fileToUpload = new File("./"+matcherUpload.group(1));
+                            if(fileToUpload.exists()) {
+                                //FileInputStream fichierInput = new FileInputStream(new File("./"+matcher.group(1)));
+                                byte[] contentToSend= Files.readAllBytes(fileToUpload.toPath());
+                                out.println("upload");
+                                out.println(matcherUpload.group(1));
+                                outputStream.writeObject(contentToSend);
+                                System.out.println("Fin du transfert de "+matcherUpload.group(1));
+                            }else{
+                                System.out.println("Le fichier n'existe pas");
+                            }
                         }
-                        /*int n;
-                        while((n=fichierInput.read(buffer))!=-1){
-                            System.out.println(buffer);
-                            outputStream.write(buffer,0,n);
-                        }*/
 
-                        //fichierInput.close();
-                    }else {
+                    }else if(matcherDownload.matches()){
+                                if(matcherDownload.group(1).isEmpty()){
+                                    System.out.println("Veuillez rentrer un nom de fichier");
+                                }else{
+                                    out.println("download");
+                                    out.println(matcherDownload.group(1));
+                                    File fileToDownload = new File("./"+matcherDownload.group(1));
+                                    if("STARTINGTODOWNLOAD".equals(in.readLine())){
+                                        byte[] contentToRead = (byte []) inputStream.readObject();
+                                        Files.write(fileToDownload.toPath(),contentToRead);
+                                        System.out.println("Téléchargement de "+ matcherDownload.group(1)+" terminé");
+                                    }else{
+                                        System.out.println("Le fichier n'existe pas");
+                                    }
+                                }
+
+                    }else{
                         System.out.println("Veuillez rentrer une commande valide");
                     }
             }
