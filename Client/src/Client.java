@@ -3,6 +3,7 @@ import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -42,17 +43,24 @@ public class Client {
                     if(matcher.matches()){
                         System.out.println("UPLOAD RECOGNIZED");
                         System.out.println(matcher.group(1));
-                        FileInputStream fichierInput = new FileInputStream(new File("./"+matcher.group(1)));
-                        byte buffer[] = new byte[1024];
-                        out.println("upload");
-                        out.println(matcher.group(1));
-                        int n;
+                        File fileToUpload = new File("./"+matcher.group(1));
+                        if(fileToUpload.exists()) {
+                            //FileInputStream fichierInput = new FileInputStream(new File("./"+matcher.group(1)));
+                            byte[] content = Files.readAllBytes(fileToUpload.toPath());
+                            out.println("upload");
+                            out.println(matcher.group(1));
+                            outputStream.writeObject(content);
+                            System.out.println("fin transfert");
+                        }else{
+                            System.out.println("Le fichier n'existe pas");
+                        }
+                        /*int n;
                         while((n=fichierInput.read(buffer))!=-1){
                             System.out.println(buffer);
                             outputStream.write(buffer,0,n);
-                        }
-                        System.out.println("fin transfert");
-                        fichierInput.close();
+                        }*/
+
+                        //fichierInput.close();
                     }else {
                         System.out.println("Veuillez rentrer une commande valide");
                     }

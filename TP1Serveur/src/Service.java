@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.Socket;
+import java.nio.file.Files;
 
 public class Service extends Thread {
     Socket socket;
@@ -25,6 +26,7 @@ public class Service extends Thread {
         }
         while(isConnected){
             String input = null;
+			String nomFichier;
             try {
                 input = in.readLine();
                 switch(input){
@@ -47,23 +49,37 @@ public class Service extends Thread {
                         out.println("");
                         break;
                     case ("upload"):
-                        String nomFichier = in.readLine();
+                        nomFichier = in.readLine();
                         System.out.println(nomFichier);
-                        byte buffer[] = new byte[1024];
-                        FileOutputStream fichierOutput = new FileOutputStream("./"+nomFichier);
+                        File fileToCreate = new File("./"+nomFichier);
+                        //byte buffer[] = new byte[1024];
+                        //FileOutputStream fichierOutput = new FileOutputStream("./"+nomFichier);
                         int n;
-                        while((n=inByte.read(buffer))!=-1){
-                            System.out.println(n);
+                        byte[] content = (byte[]) inByte.readObject();
+                        Files.write(fileToCreate.toPath(),content);
+                        //System.out.println(inByte.read(buffer));
+                        /*while((n=inByte.read(buffer))!=-1){
                             System.out.println(buffer);
-                            fichierOutput.write(buffer,0,n);
-                        }
+                            //fichierOutput.write(buffer,0,n);
+                        }*/
                         System.out.println("fin du transfert");
-                        fichierOutput.close();
+                        //fichierOutput.close();
                         break;
+					case ("download"):
+						nomFichier = in.readLine();
+						File fileToSend = new File("./"+nomFichier);
+						if(fileToSend.exists()){
+							out.println("STARTINGTODOWNLOAD");
+						}else{
+							out.println("DOESNTEXIST");
+						}
+
                     default:
-                        out.println("HELLO MDR");
+                        out.println("non prévu");
                 }
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
 
