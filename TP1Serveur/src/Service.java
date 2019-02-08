@@ -26,6 +26,17 @@ public class Service extends Thread {
         }catch(Exception e){
             e.printStackTrace();
         }
+
+        Boolean isAuthenticated = false;
+        Boolean userExistsInDatabase = true;
+        out.println("Veuillez vous identifier");
+        for (int i = 0; i < 3; i++)
+        {
+            out.println("Quel est votre ");
+            String input = null;
+
+        }
+
         while(isConnected){
             String input = null;
 			String nomFichier;

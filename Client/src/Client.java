@@ -14,7 +14,7 @@ public class Client {
         Scanner sc = new Scanner(System.in);
         // TODO Demander le port & l'adresse et les vérifier
         //int nbPort = sc.nextInt();
-        Socket socket = new Socket("127.0.0.1",5050);
+        Socket socket = new Socket("127.0.0.1",5001);
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         ObjectOutputStream outputStream = new ObjectOutputStream((socket.getOutputStream()));
