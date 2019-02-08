@@ -1,68 +1,56 @@
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.concurrent.Semaphore;
 
 public class ServerDB {
 
-    final static String DatabasePath = "";
     final static String DatabaseName = "Database.txt";
+
     static File file;
 
-    public static Boolean UtilisateurExisteDeja(String inUsername) {
-        RandomAccessFile in = null;
-        try {
-            in = new RandomAccessFile(file, "rw");
-            FileLock lock = in.getChannel().lock();
-            try {
+    public static String ObtenirPasswordUsager(String inUsername) {
 
-                // Ici lire les noms d'utilisateur et renvoyer true si le nom existe
-            } finally {
-                lock.release();
-            }
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(DatabaseName));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        }
+        try {
+            String input = null;
+            while ((input = br.readLine()) != null) {
+                String[] parts = input.split(":");
+                if (parts[0].equals(inUsername)){
+                    return parts[1];
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
-                in.close();
+                br.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return false;
+        return "";
     }
 
     public static Boolean TenterEnregisterNouvelUtilisateur(String inUsername, String inPassword) {
-        File file = new File(DatabasePath + DatabaseName);
-        RandomAccessFile in = null;
         try {
-            in = new RandomAccessFile(file, "rw");
-            FileLock lock = in.getChannel().lock();
-            try {
-
-                // Ici lire les noms d'utilisateur, si le nom existe déjà renvoyer false,
-                // sinon créer le nouveau nom et le nouveau password
-                // Enregistrer le fichier également
-            } finally {
-                lock.release();
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Files.write(Paths.get(DatabaseName), (inUsername + ":" + inPassword +'\n').getBytes(),
+                    StandardOpenOption.APPEND);
         } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            try {
-                in.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
-        return false;
+        return true;
     }
 
     public static Boolean InitDB() {
-        file = new File(DatabasePath + DatabaseName);
+        file = new File(DatabaseName);
         if (!file.exists()) {
             try {
                 file.createNewFile();

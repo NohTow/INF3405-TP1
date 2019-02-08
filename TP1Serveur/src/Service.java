@@ -1,19 +1,21 @@
 import java.io.*;
 import java.net.Socket;
 import java.nio.file.Files;
+import java.util.concurrent.Semaphore;
 
 public class Service extends Thread {
     Socket socket;
     int clientNumber;
+    String user;
+    Semaphore mutex;
     public Service(Socket socket, int nb){
         this.socket = socket;
         this.clientNumber = nb;
-
     }
 
     public void run(){
         System.out.println("Connexion d'un client");
-        Boolean isConnected = true;
+        Boolean isConnected = false;
         BufferedReader in = null;
         PrintWriter out=null;
         ObjectInputStream inByte=null;
@@ -27,16 +29,42 @@ public class Service extends Thread {
             e.printStackTrace();
         }
 
-        Boolean isAuthenticated = false;
-        Boolean userExistsInDatabase = true;
-        out.println("Veuillez vous identifier");
-        for (int i = 0; i < 3; i++)
-        {
-            out.println("Quel est votre ");
+        while (!isConnected) {
             String input = null;
-
+            try {
+                input = in.readLine();
+                this.user = input;
+                String password = ServerDB.ObtenirPasswordUsager(input);
+                System.out.println(password);
+                if ("".equals(password)) {
+                    out.println("NEW");
+                    input = in.readLine();
+                    ServerDB.TenterEnregisterNouvelUtilisateur(this.user, input);
+                    isConnected = true;
+                    System.out.println("Connexion de l'utilisateur "+this.user+" réussie");
+                    File dossierUtilisateur = new File("./"+this.user);
+                    dossierUtilisateur.mkdir();
+                }
+                else {
+                    out.println("EXIST");
+                    int i = 0;
+                    while (i < 3 && !(isConnected)) {
+                        input = in.readLine();
+                        if (password.equals(input)) {
+                            out.println("VALIDE");
+                            isConnected = true;
+                            System.out.println("Connexion de l'utilisateur "+this.user+" réussie");
+                        }
+                        else {
+                            out.println("INVALIDE");
+                        }
+                        i++;
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-
         while(isConnected){
             String input = null;
 			String nomFichier;

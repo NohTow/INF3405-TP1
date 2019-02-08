@@ -7,4 +7,10 @@ public class ServerUtils {
     {
         System.out.print("[" + socketAddress + " - " + LocalDateTime.now() + "]: " + commande);
     }
+
+    public static Boolean CheckWhitespace(String in)
+    {
+        return !in.contains(" "); // check for whitespace
+    }
+
 }

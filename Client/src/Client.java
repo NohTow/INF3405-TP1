@@ -19,7 +19,58 @@ public class Client {
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         ObjectOutputStream outputStream = new ObjectOutputStream((socket.getOutputStream()));
         ObjectInputStream inputStream = new ObjectInputStream((socket.getInputStream()));
-        Boolean isConnected = true;
+        boolean isConnected = false;
+
+        while(!isConnected){
+            String input = null;
+
+            boolean nomUsagerValide = false;
+            while(!nomUsagerValide){
+                System.out.println("Veuillez entrez votre nom d'usager :");
+                input = sc.nextLine();
+                if (ClientUtils.CheckWhitespace(input)) {
+                    nomUsagerValide = true;
+                    out.println(input);
+                }
+                else
+                    System.out.println("Nom d'usager invalide");
+            }
+            if("NEW".equals(in.readLine())){
+                Boolean passwordValide = false;
+                while (!passwordValide) {
+                    System.out.println("Veuillez entrez un nouveau password :");
+                    input = sc.nextLine();
+                    if (ClientUtils.CheckWhitespace(input)) {
+                        out.println(input);
+                        passwordValide = true;
+                        isConnected = true;
+                    }
+                    else
+                        System.out.println("Format du Password invalide");
+                }
+            } else {
+                int i = 0;
+                while (i < 3 && !(isConnected)) {
+
+                    System.out.println("Quel est votre password ");
+                    input = sc.nextLine();
+                    if (ClientUtils.CheckWhitespace(input)) {
+                        out.println(input);
+                        if("VALIDE".equals(in.readLine())){
+                            isConnected = true;
+                            System.out.println("Connexion réussie");
+                        }else{
+                            i++;
+                        }
+                    }else{
+                        System.out.println("Format du password invalide");
+                    }
+
+                }
+            }
+
+        }
+
         while(isConnected){
             String message = sc.nextLine();
             switch(message){
