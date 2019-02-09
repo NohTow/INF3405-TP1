@@ -15,7 +15,8 @@ public class SharedUtils {
 
             if (sc.hasNextInt()) {
                 nbPort = sc.nextInt();
-                if(nbPort > 5000 && nbPort < 5050) { // Vérifie si le port est entre 5000 et 5050
+                if(nbPort >= 5000 && nbPort <= 5050) { // Vérifie si le port est entre 5000 et 5050
+					//5050 compris ?
                     obtenuPortValide = true;
                     sc.nextLine();
                 }
@@ -43,7 +44,7 @@ public class SharedUtils {
                 String[] parties = input.split("\\.");
                 // Adresse doit contenir quatre nombres séparé d'un point (.)
                 if (parties.length == 4) {
-                    // Chaque octet doit être de 0 à 255 inclusivement
+                    // Chaque octet doit être de 0 à 255 inclusivement pour exclure les adresses de broadcast
                     for (int i = 0; i < parties.length; i++) {
                         int nb = parseInt(parties[i]);
                         if (nb < 0 || nb > 255) {

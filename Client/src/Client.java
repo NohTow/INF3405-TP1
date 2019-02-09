@@ -11,10 +11,12 @@ import java.util.regex.Pattern;
 
 public class Client {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
+        int nbPort;
+        String adresseIP="";
         Scanner sc = new Scanner(System.in);
-        // TODO Demander le port & l'adresse et les vérifier
-        //int nbPort = sc.nextInt();
-        Socket socket = new Socket("127.0.0.1",5001);
+        nbPort = SharedUtils.DemanderPortAUtiliser(sc);
+        adresseIP = SharedUtils.DemanderAdresseIPAUtiliser(sc);
+        Socket socket = new Socket(adresseIP,nbPort);
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         ObjectOutputStream outputStream = new ObjectOutputStream((socket.getOutputStream()));
@@ -28,22 +30,25 @@ public class Client {
             while(!nomUsagerValide){
                 System.out.println("Veuillez entrez votre nom d'usager :");
                 input = sc.nextLine();
-                if (ClientUtils.CheckWhitespace(input)) {
+                if (!("".equals(input))){
                     nomUsagerValide = true;
                     out.println(input);
                 }
                 else
-                    System.out.println("Nom d'usager invalide");
+                    System.out.println("Nom d'utilisateur avec un format incorrect");
+                	//TODO on peut faire des dossiers avec des espaces
             }
             if("NEW".equals(in.readLine())){
+				System.out.println("Création du compte "+input);
                 Boolean passwordValide = false;
                 while (!passwordValide) {
                     System.out.println("Veuillez entrez un nouveau password :");
                     input = sc.nextLine();
-                    if (ClientUtils.CheckWhitespace(input)) {
+                    if (ClientUtils.CheckWhitespace(input) && !("".equals(input))) {
                         out.println(input);
                         passwordValide = true;
                         isConnected = true;
+						System.out.println("Connexion réussie");
                     }
                     else
                         System.out.println("Format du Password invalide");
@@ -52,7 +57,7 @@ public class Client {
                 int i = 0;
                 while (i < 3 && !(isConnected)) {
 
-                    System.out.println("Quel est votre password ");
+                    System.out.println("Veuillez rentrer votre mot de passe ");
                     input = sc.nextLine();
                     if (ClientUtils.CheckWhitespace(input)) {
                         out.println(input);
@@ -60,7 +65,9 @@ public class Client {
                             isConnected = true;
                             System.out.println("Connexion réussie");
                         }else{
-                            i++;
+							i++;
+							System.out.println("Mauvais mot de passe "+i+"/3");
+
                         }
                     }else{
                         System.out.println("Format du password invalide");
@@ -83,6 +90,9 @@ public class Client {
                 case "ls":
                     out.println("ls");
                     String temp = in.readLine();
+                    if("".equals(temp)){
+						System.out.println("Aucun fichier dans votre dossier");
+					}
                     while(!("".equals(temp))){
                         System.out.println(temp);
                         temp = in.readLine();

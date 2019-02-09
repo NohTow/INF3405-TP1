@@ -2,21 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26fbc3c3-2aef-4412-87cf-443926e53e17" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ClientUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IoT.docx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Client/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/SharedUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/SharedUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SharedUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SharedUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TP1Serveur/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1Serveur/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP1Serveur/out/production/TP1Serveur/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1Serveur/out/production/TP1Serveur/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP1Serveur/Database.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1Serveur/Database.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP1Serveur/IoT.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP1Serveur/out/production/TP1Serveur/ServerDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1Serveur/out/production/TP1Serveur/ServerDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP1Serveur/out/production/TP1Serveur/ServerUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1Serveur/out/production/TP1Serveur/ServerUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TP1Serveur/out/production/TP1Serveur/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1Serveur/out/production/TP1Serveur/Service.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP1Serveur/out/production/TP1Serveur/Utils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP1Serveur/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1Serveur/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP1Serveur/out/production/TP1Serveur/SharedUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1Serveur/out/production/TP1Serveur/SharedUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TP1Serveur/src/ServerDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1Serveur/src/ServerDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TP1Serveur/src/ServerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1Serveur/src/ServerUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TP1Serveur/src/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1Serveur/src/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP1Serveur/src/SharedUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1Serveur/src/SharedUtils.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,7 +28,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Client$Client.ic" NAME="Client Coverage Results" MODIFIED="1548547364936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Client$Client.ic" NAME="Client Coverage Results" MODIFIED="1549674004507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Client" />
@@ -37,8 +38,8 @@
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="187">
+              <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -49,12 +50,8 @@
       <file leaf-file-name="ClientUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ClientUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-              <folding>
-                <element signature="e#88#89#0" expanded="true" />
-                <element signature="e#152#153#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -62,11 +59,8 @@
       <file leaf-file-name="SharedUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SharedUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="731">
+              <caret line="46" column="109" selection-start-line="46" selection-start-column="109" selection-end-line="46" selection-end-column="109" />
             </state>
           </provider>
         </entry>
@@ -92,8 +86,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Utils.java" />
-        <option value="$PROJECT_DIR$/src/SharedUtils.java" />
         <option value="$PROJECT_DIR$/src/ClientUtils.java" />
+        <option value="$PROJECT_DIR$/src/SharedUtils.java" />
         <option value="$PROJECT_DIR$/src/Client.java" />
       </list>
     </option>
@@ -107,10 +101,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-9" />
+    <option name="width" value="975" />
+    <option name="height" value="1049" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -119,6 +113,8 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -135,8 +131,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -231,14 +225,17 @@
       <updated>1548428291400</updated>
       <workItem from="1548539375087" duration="13194000" />
       <workItem from="1548612301910" duration="2207000" />
+      <workItem from="1549668876482" duration="6141000" />
+      <workItem from="1549675134426" duration="199000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15401000" />
+    <option name="totallyTimeSpent" value="21741000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -248,27 +245,28 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32725322" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32547864" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49760765" visible="true" weight="0.22338204" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49484536" visible="true" weight="0.11208054" />
+      <window_info anchor="right" id="Database" order="8" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.5051546" side_tool="true" visible="true" weight="0.11208054" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" order="6" sideWeight="0.50239235" side_tool="true" visible="true" weight="0.22338204" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Database" order="8" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.3295302" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,6 +278,47 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Client.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1649">
+          <caret line="97" column="38" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ClientUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SharedUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="46" column="109" selection-start-line="46" selection-start-column="109" selection-end-line="46" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ClientUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="31" column="26" lean-forward="true" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
           <folding>
@@ -288,42 +327,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SharedUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SharedUtils.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/System.java" />
     <entry file="file://$PROJECT_DIR$/src/ClientUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-          <folding>
-            <element signature="e#88#89#0" expanded="true" />
-            <element signature="e#152#153#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SharedUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="731">
+          <caret line="46" column="109" selection-start-line="46" selection-start-column="109" selection-end-line="46" selection-end-column="109" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="187">
+          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

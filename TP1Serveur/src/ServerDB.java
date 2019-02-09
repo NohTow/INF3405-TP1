@@ -8,7 +8,7 @@ import java.util.concurrent.Semaphore;
 
 public class ServerDB {
 
-    final static String DatabaseName = "Database.txt";
+    final static String DatabaseName = "Database.txt"; //nom du fichier où sont stocker les user:pass
 
     static File file;
 
@@ -40,7 +40,7 @@ public class ServerDB {
         return "";
     }
 
-    public static Boolean TenterEnregisterNouvelUtilisateur(String inUsername, String inPassword) {
+    public static Boolean enregisterNouvelUtilisateur(String inUsername, String inPassword) {
         try {
             Files.write(Paths.get(DatabaseName), (inUsername + ":" + inPassword +'\n').getBytes(),
                     StandardOpenOption.APPEND);
@@ -60,4 +60,8 @@ public class ServerDB {
         }
         return true;
     }
+    public static void createUser(String name){
+		File dossierUtilisateur = new File("./storage/"+name+"/");
+		dossierUtilisateur.mkdir();
+	}
 }
