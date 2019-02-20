@@ -13,6 +13,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         nbPort = SharedUtils.DemanderPortAUtiliser(sc);
         adresseIP = SharedUtils.DemanderAdresseIPAUtiliser(sc);
+        sc.close();
 
         // Initialize la DB
         ServerDB.InitDB();
