@@ -5,13 +5,10 @@ import java.util.concurrent.Semaphore;
 
 public class Service extends Thread {
 	Socket socket;
-	int clientNumber;
 	String user;
-	Semaphore mutex;
 
-	public Service(Socket socket, int nb) {
+	public Service(Socket socket) {
 		this.socket = socket;
-		this.clientNumber = nb;
 	}
 
 	public void run() {

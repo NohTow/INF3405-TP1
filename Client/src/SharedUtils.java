@@ -15,7 +15,7 @@ public class SharedUtils {
 
             if (sc.hasNextInt()) {
                 nbPort = sc.nextInt();
-                if(nbPort > 5000 && nbPort < 5050) { // Vérifie si le port est entre 5000 et 5050
+                if(nbPort >= 5000 && nbPort <= 5050) { // Vérifie si le port est entre 5000 et 5050
                     obtenuPortValide = true;
                     sc.nextLine();
                 }

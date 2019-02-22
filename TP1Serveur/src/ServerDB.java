@@ -58,6 +58,10 @@ public class ServerDB {
                 e.printStackTrace();
             }
         }
+        File storage = new File("storage");
+        if(!(storage.exists())){
+            storage.mkdir();
+        }
         return true;
     }
     public static void createUser(String name){

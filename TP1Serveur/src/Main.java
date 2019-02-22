@@ -18,12 +18,11 @@ public class Main {
         // Initialize la DB
         ServerDB.InitDB();
 
-        int clientNumber = 0;
         try (ServerSocket listener = new ServerSocket()) {
             listener.bind(new InetSocketAddress(adresseIP,nbPort));
             System.out.println(listener.getInetAddress());
             while (true) {
-                new Service(listener.accept(), clientNumber++).start();
+                new Service(listener.accept()).start();
             }
         }
     }

@@ -81,7 +81,7 @@ public class Client {
         while(isConnected){
             String message = sc.nextLine();
             switch(message){
-                case "dc":
+                case "exit":
                     isConnected = false;
                     out.println("dc");
                     System.out.println(in.readLine());
@@ -152,8 +152,6 @@ public class Client {
                     }
             }
 
-            //outputStream.write(toBytes(message.toCharArray()));
-            //System.out.println(in.readLine());
         }
         in.close();
         out.close();
