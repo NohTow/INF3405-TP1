@@ -25,5 +25,5 @@ Les commandes disponibles sont les suivantes :
 - exit (permet la déconnexion)
 
 ## Améliorations possibles
-- Hashage des mots de passes
+- Hashage des mots de passe
 - Gestions des sous-dossiers (cd)
